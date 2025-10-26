@@ -1,0 +1,16 @@
+       Đặc điểm môi trường
+               Mạng biên 5G là môi trường mạng phức tạp, có tính phi tập trung cao, nhiều node kết nối đồng thời (người dùng/thiết bị), chuyển giao liên tục (handover), số lượng dịch vụ biên tăng mạnh (edge computing), và đòi hỏi bảo mật thời gian thực.
+       Vai trò của GNN ( Graph Neural Network ) 
+•  Phát hiện tấn công tại node biên: Triển khai GNN trên gateway hoặc thiết bị edge, inference trực tiếp embedding để cảnh báo tấn công/tải trọng bất thường, giảm độ trễ phản ứng so với phải gửi dữ liệu về cloud để phân tích.
+•  Tối ưu hóa quản lý tài nguyên, định tuyến adaptive, bảo trì dự đoán: GNN giúp định tuyến các dịch vụ thông minh, cân bằng tải, phát hiện khiếm khuyết/mất kết nối nhờ phân tích topology động.
+•  GraphSAINT, ClusterGCN, NeighborLoader: Sử dụng kỹ thuật sampling lân cận để chia nhỏ đồ thị thật lớn thành tập data nhỏ hơn, enable training/inferring near real-time trên thiết bị biên với hạn chế RAM/CPU.
+       Tối ưu hóa GNN cho thiết bị biên
+Vấn đề của GNN với thiết bị biên là:
+•	Giới hạn tài nguyên (RAM, Compute, năng lượng)
+•	Đồ thị lớn, nhiều node/edge
+•	Yêu cầu inference thời gian thực (real-time)
+        Giải pháp chính
+•	Sử dụng sampling (GraphSAGE, GraphSAINT, ClusterGCN): Lấy mẫu ngẫu nhiên tập node/edge cục bộ, giảm chi phí tính toán, ổn định học máy (tránh overfitting/over-smoothing).
+•	Auto-Designed Lightweight GNN (ALGNN, LightGNN): Sử dụng kiến trúc GNN nhẹ, pruning mạng, distillation knowledge, tìm kiếm tự động thông qua NAS/PSO/MOPSO để giảm số tham số, tiêu thụ.
+•	Tối ưu message passing, sử dụng attention Mechanism: Tập trung vào đường truyền quan trọng, giảm số lượng thông điệp phải truyền tải.
+•	Học liên tục (Continual Learning, Elastic GNN): Giúp cập nhật mô hình nhanh theo thời gian mà không cần đào tạo lại từ đầu, đáp ứng môi trường mạng thay đổi động; chống "quên lãng thảm họa" (catastrophic forgetting).
